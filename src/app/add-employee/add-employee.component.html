@@ -1,0 +1,69 @@
+<div class="container col-md-5">
+    <h3 style="margin-top: 15px; text-align: center;">Add new Employee</h3>
+    <br>
+    <form #add="ngForm" (ngSubmit)="addEmployee()">
+        <div class="form-group">
+            <label for="employeeId">Employee Id</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.employeeId" name="employeeId">
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" 
+                required [(ngModel)]="employee.firstName" name="firstName">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.lastName" name="lastname">
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" required [(ngModel)]="employee.dob" name="dob">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.gender" name="gender">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Contact Number</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.phoneNumber" name="phoneNumber">
+        </div>
+        <div class="form-group">
+            <label for="dateOfJoining">Date of Joining</label>
+            <input type="date" class="form-control" required [(ngModel)]="employee.dateOfJoining" name="dateOfJoining">
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.salary" name="salary">
+        </div>
+        <div class="form-group">
+            <label for="shift">Shift</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.shift" name="shift">
+        </div>
+        <div class="form-group">
+            <label for="createdSource">Created Source</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.createdSource" name="createdSource">
+        </div>
+        <div class="form-group">
+            <label for="createdSourceType">Created Source Type</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.createdSourceType" name="createdSourceType">
+        </div>
+        <div class="form-group">
+            <label for="createdDttm">Created Date & Time</label>
+            <input type="date" class="form-control" required [(ngModel)]="employee.createdDttm" name="createdDttm">
+        </div>
+        <div class="form-group">
+            <label for="modifiedSource">Modified Source</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee.modifiedSource" name="modifiedSource">
+        </div>
+        <div class="form-group">
+            <label for="modifiedSourceType">Modified Source Type</label>
+            <input type="text" class="form-control" required [(ngModel)]="employee. modifiedSourceType" name=" modifiedSourceType">
+        </div>
+        <div class="form-group">
+            <label for="modifiedDttm">Modified Date & Time</label>
+            <input type="date" class="form-control" required [(ngModel)]="employee.modifiedDttm" name="modifiedDttm">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>&nbsp;
+        <button (click)="goToEmpList()" type="button" class="btn btn-secondary">Cancel</button>
+    </form>
+</div>
