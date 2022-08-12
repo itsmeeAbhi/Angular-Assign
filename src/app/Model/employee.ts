@@ -6,7 +6,7 @@ export class Employee {
     dob:string;
     gender:string;
     phoneNumber: string;
-    dateOfJoining:Date
+    dateOfJoining:string;
     salary:string;
     shift:string;
     createdSource:string;

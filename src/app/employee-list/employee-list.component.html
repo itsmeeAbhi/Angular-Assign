@@ -1,59 +1,123 @@
-
-<div>
-    <table class="table table-striped">
-        <thead>
+<p-toast></p-toast>
+<div class="card">
+    <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+            
+        </ng-template>
+        <ng-template pTemplate="right">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="addEmployee()"></button>
+        </ng-template>
+    </p-toolbar>
+    <p-table [value]="listOfEmployee" responsiveLayout="scroll" styleClass="p-datatable-striped" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,25]">
+        <ng-template pTemplate="header">
             <tr>
-                <th scope="col">Emp Id</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Date Of Birth</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Date Of Joining</th>
-                <th scope="col">Salary</th>
-                <th scope="col">Shift</th>
-                <th scope="col">Created Source</th>
-                <th scope="col">Created Date&Time</th>
-                <th scope="col">Modified Source</th>
-                <th scope="col">Modified Date&Time</th>
-                <th></th>
+                <th>Emp Id</th>
+                <th>Emp Name</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Date Of Joining</th>
+                <th>Salary</th>
+                <th>Shift</th>
+                <th>Created Source</th>
+                <th>Created SrcType</th>
+                <th>Created Date&Time</th>
+                <th>Modified Source</th>
+                <th>Modified SrcType</th>
+                <th>Modified Date&Time</th>
+                <th [ngStyle]="{'width':'120px'}">Actions</th>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-            </tr>
-            <tr *ngFor="let emp of employee">
-                <td>{{emp.employeeId}}</td>
-                <td>{{emp.firstName}}</td>
-                <td>{{emp.lastName}}</td>
-                <td>{{emp.dob}}</td>
-                <td>{{emp.gender}}</td>
-                <td>{{emp.phoneNumber}}</td>
-                <td>{{emp.dateOfJoining}}</td>
-                <td>{{emp.salary}}</td>
-                <td>{{emp.shift}}</td>
-                <td>{{emp.createdSource}}</td>
-                <td>{{emp.createdDttm}}</td>
-                <td>{{emp.modifiedSource}}</td>
-                <td>{{emp.modifiedDttm}}</td>
+        </ng-template>
+        <ng-template pTemplate="body" let-listOfEmployee>
+            <tr style="height:10px">
+                <td>{{listOfEmployee.employeeId}}</td>
+                <td>{{listOfEmployee.firstName}}</td>
+                <td>{{listOfEmployee.dob}}</td>
+                <td>{{listOfEmployee.gender}}</td>
+                <td>{{listOfEmployee.phoneNumber}}</td>
+                <td>{{listOfEmployee.dateOfJoining}}</td>
+                <td>{{listOfEmployee.salary}}</td>
+                <td>{{listOfEmployee.shift}}</td>
+                <td>{{listOfEmployee.createdSource}}</td>
+                <td>{{listOfEmployee.createdSourceType}}</td>
+                <td>{{listOfEmployee.createdDttm}}</td>
+                <td>{{listOfEmployee.modifiedSource}}</td>
+                <td>{{listOfEmployee.modifiedSourceType}}</td>
+                <td>{{listOfEmployee.modifiedDttm}}</td>
                 <td>
-                    <button type="button" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                        <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-                      </svg></button>&nbsp;
-                    <button type="button" class="btn btn-warning">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                          </svg>
-                    </button>&nbsp;
-                    <button type="button" class="btn btn-danger"><i class="bi bi-trash">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-                          </svg>
-                    </i></button></td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button>&nbsp;
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteEmployee(listOfEmployee.employeeId)"></button>
+                </td>
             </tr>
-        </tbody>
-    </table>
-    <button (click)="addEmployee()" type="button" class="btn btn-success">Add new Employee</button>&nbsp;
+        </ng-template>
+    </p-table>
 </div>
+<p-dialog [(visible)]="empDialog" [style]="{width: '800px'}" header="Add New Employee" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field p-col-12 p-md-4">
+            <label for="employeeId">Employee Id</label>
+            <input type="text" pInputText id="employeeId" [(ngModel)]="employee.employeeId" required />
+            <small class="p-invalid" *ngIf="submitted && !employee.employeeId">Name is required.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="firstName" (ngModel)="'employee.firstName'" required />
+            <small class="p-invalid" *ngIf="submitted && !employee.firstName">First Name is required.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="dob">Date of Birth</label>
+            <p-calendar (ngModel)="'employee.dob'" [showIcon]="true" inputId="dob"></p-calendar>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label class="p-mb-3">Gender</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="gender" value="Male" (ngModel)="'employee.gender'"></p-radioButton>
+                    <label for="category1">Male</label>&nbsp;
+                    <p-radioButton id="category2" name="gender" value="Female" (ngModel)="'employee.gender'"></p-radioButton>
+                    <label for="category2">Female</label>
+                </div>
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" pInputText id="phoneNumber" (ngModel)="'employee.phoneNumber'" required />
+            <small class="p-invalid" *ngIf="submitted && !employee.phoneNumber">Phone Number is required.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="dateOfJoining">Date Of Joining</label>
+            <input type="text" pInputText id="dateOfJoining" (ngModel)="'employee.dateOfJoining'" />
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="salary">Salary</label>
+            <input type="text" pInputText id="salary" (ngModel)="'employee.salary'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="shift">Shift</label>
+            <input type="text" pInputText id="shift" (ngModel)="'employee.shift'" />
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="createdSource">Created Source</label>
+            <input type="text" pInputText id="createdSource" (ngModel)="'employee.createdSource'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="createdDttm">Created Date&Time</label>
+            <input type="text" pInputText id="createdDttm" (ngModel)="'employee.createdDttm'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="modifiedSource">Modified Source</label>
+            <input type="text" pInputText id="modifiedSource" (ngModel)="'employee.modifiedSource'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="modifiedDttm">Modified Date&Time</label>
+            <input type="text" pInputText id="modifiedDttm" (ngModel)="'employee.modifiedDttm'"/>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addEmployees()"></button>
+    </ng-template>
+
+</p-dialog>
+    

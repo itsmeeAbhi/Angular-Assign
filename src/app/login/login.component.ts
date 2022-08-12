@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute) {}
 
   ngOnInit() {
+
   }
   loginUser(){
     this.submitted=true;
@@ -32,7 +33,9 @@ export class LoginComponent implements OnInit {
     this.service.loginUserFromRestApi(this.user).subscribe(
       data => {
         if(data){
-          this.router.navigate(['/home']);
+          this.service.isAuth.next(true);
+          this.service.user.next(this.user)
+          this.router.navigate(['home']);
         }else{
           console.log("Invalid Credentials")
           this.msg="Password Invalid"

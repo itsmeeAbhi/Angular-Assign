@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  user = new BehaviorSubject<User>(null);
+  isAuth = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
   isloggedIn=true;
@@ -16,5 +19,8 @@ export class LoginService {
     {
       params: new HttpParams().set('employeeId', user.employeeId).set('password', user.password)
     });
+  }
+  logout(){
+    this.user.next(null);
   }
 }
