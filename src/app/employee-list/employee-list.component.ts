@@ -63,7 +63,6 @@ export class EmployeeListComponent implements OnInit {
   }
   addEmployees() {
     this.submitted = true;
-    console.log(this.employee);
     this.empservice.addEmployeeToBackend(this.employee).subscribe(
       data => {
         console.log("Data Added ");

@@ -13,7 +13,7 @@ export class AppComponent {
   ngOnInit(){
 
     this.authservice.isAuth.subscribe(res =>{
-      this.isauthenticated = res;
+      this.isauthenticated = true;
     })
   }
   onLogout(){

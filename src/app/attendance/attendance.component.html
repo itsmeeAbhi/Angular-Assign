@@ -5,7 +5,7 @@
             
         </ng-template>
         <ng-template pTemplate="right">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" ></button>
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="addattend()" ></button>
         </ng-template>
     </p-toolbar>
     
@@ -34,7 +34,22 @@
         </ng-template>
         <ng-template pTemplate="body" let-listOfEmployee>
             <tr style="height:10px">
-                <td>{{listOfEmployee.employeeId}}</td>
+                <td>{{listOfEmpAttendance.employeeId}}</td>
+                <td>{{listOfEmpAttendance.month}}</td>
+                <td>{{listOfEmpAttendance.date}}</td>
+                <td>{{listOfEmpAttendance.departmentId}}</td>
+                <td>{{listOfEmpAttendance.available}}</td>
+                <td>{{listOfEmpAttendance.checkIn}}</td>
+                <td>{{listOfEmpAttendance.checkout}}</td>
+                <td>{{listOfEmpAttendance.attendanceCount}}</td>
+                <td>{{listOfEmpAttendance.shift}}</td>
+                <td>{{listOfEmpAttendance.createdSource}}</td>
+                <td>{{listOfEmpAttendance.createdSourceType}}</td>
+                <td>{{listOfEmpAttendance.createdDttm}}</td>
+                <td>{{listOfEmpAttendance.modifiedSource}}</td>
+                <td>{{listOfEmpAttendance.modifiedSourceType}}</td>
+                <td>{{listOfEmpAttendance.modifiedDttm}}</td>
+            
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" ></button>&nbsp;
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
@@ -43,4 +58,71 @@
         </ng-template>
     </p-table>
 </div>
+<p-dialog [(visible)]="empDialog" [style]="{width: '800px'}" header="Add New Employee" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field p-col-12 p-md-4">
+            <label for="employeeId">Employee Id</label>
+            <input type="text" pInputText id="employeeId" [(ngModel)]="employee.employeeId" required />
+            <small class="p-invalid" *ngIf="submitted && !employee.employeeId">Name is required.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="firstName" (ngModel)="'employee.firstName'" required />
+            <small class="p-invalid" *ngIf="submitted && !employee.firstName">First Name is required.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="dob">Date of Birth</label>
+            <p-calendar (ngModel)="'employee.dob'" [showIcon]="true" inputId="dob"></p-calendar>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label class="p-mb-3">Gender</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="gender" value="Male" (ngModel)="'employee.gender'"></p-radioButton>
+                    <label for="category1">Male</label>&nbsp;
+                    <p-radioButton id="category2" name="gender" value="Female" (ngModel)="'employee.gender'"></p-radioButton>
+                    <label for="category2">Female</label>
+                </div>
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" pInputText id="phoneNumber" (ngModel)="'employee.phoneNumber'" required />
+            <small class="p-invalid" *ngIf="submitted && !employee.phoneNumber">Phone Number is required.</small>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="dateOfJoining">Date Of Joining</label>
+            <input type="text" pInputText id="dateOfJoining" (ngModel)="'employee.dateOfJoining'" />
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="salary">Salary</label>
+            <input type="text" pInputText id="salary" (ngModel)="'employee.salary'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="shift">Shift</label>
+            <input type="text" pInputText id="shift" (ngModel)="'employee.shift'" />
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="createdSource">Created Source</label>
+            <input type="text" pInputText id="createdSource" (ngModel)="'employee.createdSource'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="createdDttm">Created Date&Time</label>
+            <input type="text" pInputText id="createdDttm" (ngModel)="'employee.createdDttm'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="modifiedSource">Modified Source</label>
+            <input type="text" pInputText id="modifiedSource" (ngModel)="'employee.modifiedSource'"/>
+        </div>
+        <div class="p-field p-col-12 p-md-4">
+            <label for="modifiedDttm">Modified Date&Time</label>
+            <input type="text" pInputText id="modifiedDttm" (ngModel)="'employee.modifiedDttm'"/>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="addAttendance()"></button>
+    </ng-template>
+
+</p-dialog>
 
